@@ -32,13 +32,28 @@
  * Basic tree that stores a value.
  */
 
-var Tree = function(value){
+var Tree = function(value) {
   this.value = value;
   this.children = [];
 };
 
 Tree.prototype.countLeaves = function () {
   // TODO: implement me!
+  // count how many leaves there are
+  var count = 0;
+  //if there are children call count leaves on each new node
+  function recurser(tree){
+    if(tree.children.length >=1){
+      return tree.children.forEach(function(child){recurser(child)})
+    } else{
+      count ++
+    }
+  } 
+
+  recurser(this)
+  //if there are no children increment the count
+  //return the count
+  return count
 }
 
 /**
@@ -94,3 +109,4 @@ Tree.prototype.removeChild = function(child){
     throw new Error("That node is not an immediate child of this tree");
   }
 };
+
