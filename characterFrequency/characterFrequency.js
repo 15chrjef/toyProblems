@@ -35,7 +35,36 @@
  *
  */
 
+debugger;
+ var characterFrequency = function(string) {
+  var obj = {}
+  var firstArr = []
+  var arr = []
+  for(var i = 0; i < string.length; i++){
+    if(obj[string[i]]){
+      obj[string[i]] ++
+    }else {
+      obj[string[i]] = 1;
+    }
+  }
+  for(var key in obj){
+    firstArr.push([key, obj[key]])
+  }
+  while(firstArr.length > 0){
+    var first = firstArr[0]
+    for(var j = 1; j < firstArr.length; j++){
+      if(first[1] < firstArr[j][1]){
+        first = firstArr[j];
+      }
+    }
+    arr.push(first)
+    firstArr = firstArr.filter(function(item){
+      return item[0] !== first[0]
+    })
+    }
+    console.log(arr)
+    return arr;
+  }
 
-var characterFrequency = function(string) {
-  return result;
-};
+
+characterFrequency('mississippi')
