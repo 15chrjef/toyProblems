@@ -11,4 +11,32 @@
 
 // Solved in O(n) time with O(1) memory
 var sumArray = function(array) {
+
+  var counter = array[0]
+  var saved = array.reduce(function(item, accumualtor){
+    return accumualtor += item
+  }, 0)
+  for(var i = 1; i < array.length; i++){
+    if(array[i] >= 0){
+      counter += array[i];
+      if(i === array.length -1){
+        if(counter > saved){
+          saved = counter;
+        } 
+      }
+    }
+    //else see if our current is larger than saved, 
+      //if it is override saved and set counter to zero , 
+      //else set counter to 0
+    else{
+      if(counter > saved){
+        saved = counter;
+      } 
+      counter = 0;
+    }
+  }
+  if(saved <= 0){
+    return 0
+  }
+  return saved;
 };
