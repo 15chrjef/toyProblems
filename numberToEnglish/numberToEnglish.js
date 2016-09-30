@@ -53,6 +53,28 @@ var numbersToPlace = {
   1000000000000000000: 'quintillion',
 };
 
-Number.prototype.toEnglish = function () {
-  // return my value as english words
+Number.prototype.toEnglish = function (number1) {
+  var number1 = num
+  //if we are not given a number return ''
+  if(typeof num !== 'number'){
+    return ''
+  }
+  var ones = ['zero','one','two','three','four', 'five','six','seven','eight','nine'];
+  var tweens = ['ten','eleven','twelve','thirteen', 'fourteen','fifteen','sixteen', 'seventeen','eighteen','nineteen'];
+  var tens = ['twenty','thirty','forty','fifty', 'sixty','seventy','eighty','ninety'];
+  var bigs = ['','thousand','million', 'billion','trillion'];
+  var string = '';
+  var sequence = (num.match(/.{1,3}/g));
+  //if the number is in the hundreds place return ''
+  var current = sequence[0];
+  if( sequence[sequence.length-1].length === 1){
+    string.push(ones[current] + ',')
+  }
+  if(sequence[sequence.length-1].length === 2){
+    
+  }
+  if(sequence[sequence.length-1].length === 3){
+    r
+  }
+
 };
