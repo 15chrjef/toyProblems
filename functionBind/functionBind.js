@@ -27,7 +27,7 @@ var bind = function(fn, obj) {
   // TODO: Your code here
   var args = Array.prototype.slice.call(arguments)
   return function(val){
-    return fn.apply(obj, [[...args.slice(2)],val])
+    return fn.apply(obj, [...args.slice(2)].concat([val]))
   }
 };
 
