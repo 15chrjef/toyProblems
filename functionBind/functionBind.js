@@ -23,9 +23,12 @@
  *
 */
 
-var bind = function(
-) {
+var bind = function(fn, obj) {
   // TODO: Your code here
+  var args = Array.prototype.slice.call(arguments)
+  return function(val){
+    return fn.apply(obj, [[...args.slice(2)],val])
+  }
 };
 
 /*
@@ -53,7 +56,26 @@ var bind = function(
  *
 */
 
-Function.prototype.bind = function(
-) {
-  // TODO: Your code here
-};
+// Function.prototype.bind = function(
+// ) {
+//   // TODO: Your code here
+// };
+
+   // var alice = {
+   //   name: 'alice',
+   //   shout: function(){
+   //     console.log(this.name)
+   //   }
+   // }
+   // var boundShout = bind(alice.shout, alice);
+   // boundShout(); // alerts 'alice'
+   // boundShout = bind(alice.shout, {name: 'bob'});
+   // boundShout(); // alerts 'bob'
+
+
+ var func = function(a, b){ return a + b };
+ var boundFunc = bind(func, null, 'foo');
+ console.log(boundFunc)
+ var result = boundFunc('bar');
+ console.log(result)
+ console.log(result === 'foobar'); // true

@@ -26,7 +26,6 @@
   *  Why not filter your results to only return words contained in that file?
   *
   */
-
 var phoneDigitsToLetters = {
   0: '0',
   1: '1',
@@ -39,8 +38,41 @@ var phoneDigitsToLetters = {
   8: 'TUV',
   9: 'WXYZ'
 };
-
-
+debugger
 var telephoneWords = function(digitString) {
   // TODO: return every combination that can be spelled on a phone with these digits
+  //instantiate array
+  var arr = [];
+  //instantiate recursive function(string, result array)
+  (function recurseMe(string, results, i, j){
+    //array is what is passed in or empty
+     j = j || 0;
+    var narr = results || [];
+    //if the array is full push to our main array
+    //iterate over the string
+    for(;i < 3; i++){
+      //if zero or one return digit
+      if(narr.length === digitString.length){
+        continue;
+      }
+      if(string[i] === '1' || string[i] === '0'){
+        narr.push(string[i])
+        continue;
+      } else{
+        narr.push(phoneDigitsToLetters[string[i]][j])
+        recurseMe(string, narr, i, j++)
+      }
+    }
+    arr.push(narr)
+      return ''
+      
+      //else iterate over all three options for the phone number
+  })(digitString, [], 0, 0)
+    
+  //return arr
+  console.log(arr)
+  return arr;
 };
+
+
+telephoneWords('2')
