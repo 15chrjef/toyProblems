@@ -31,4 +31,11 @@
 
 
 var jsonpRequest = function(url, callback) {
+  var jsonRequest = function()
 };
+
+
+jsonpRequest('http://toy-problems.hackreactor.com:3003/jsonparty', function (data) {
+      console.log(data.response); // "Aw yeah, now we're JSONPartying"
+      console.log(data.random); // 3558
+    });

@@ -24,8 +24,46 @@ makeChange(1) === 1
 makeChange(2) === 2
 */
 
+var options = {
+  '1': 1,
+  '2': 2,
+  '5': 5,
+  '10': 10,
+  '20': 20,
+  '50': 50,
+  '100': 100,
+  '200': 200,
+}
+
 var makeChange = function(total) {
-
+  var counter = 0;
+  if(total === 1){
+    return 1
+  }
+  if(total === 2){
+    return 2;
+  }
+  //create recurisve function(current val)
+  (function recureser(curVal){
+    //if val equals total
+    if( curVal === total){
+      //increment counter
+      counter ++;
+      return;
+    }  
+    //iterate over prop objects
+    for(key in options){
+      //if total - current val is greater than or equal to option property
+      if((total - curVal) >= options[key]){
+        //add the object property to the old one
+        curVal += options[key]
+        //call the subroutine with the current val
+        recureser(curVal);
+      }
+    }
+  })(0)
+  //return counter
+  console.log(counter)
+  return counter
 };
-
 
