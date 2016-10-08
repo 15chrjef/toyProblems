@@ -45,23 +45,23 @@ var makeChange = function(total) {
   }
   //create recurisve function(current val)
   (function recureser(curVal){
-    //if val equals total
-    if( curVal === total){
-      //increment counter
-      counter ++;
-      return;
-    }  
-    //iterate over prop objects
-    for(key in options){
-      //if total - current val is greater than or equal to option property
-      if((total - curVal) >= options[key]){
-        //add the object property to the old one
-        curVal += options[key]
-        //call the subroutine with the current val
-        recureser(curVal);
-      }
-    }
-  })(0)
+  //   //if val equals total
+  //   if( curVal === total){
+  //     //increment counter
+  //     counter ++;
+  //     return;
+  //   }  
+  //   //iterate over prop objects
+  //   for(key in options){
+  //     //if total - current val is greater than or equal to option property
+  //     if((total - curVal) >= options[key]){
+  //       //add the object property to the old one
+  //       curVal += options[key]
+  //       //call the subroutine with the current val
+  //       recureser(curVal);
+  //     }
+  //   }
+  // })(0)
   //return counter
   console.log(counter)
   return counter
