@@ -25,20 +25,72 @@ var makeHashTable = function() {
   var storage = [];
   var storageLimit = 4;
   var size = 0;
+  var upper = .75;
+  var lower = .25;
   
-  result.insert = function(/*...*/ 
-) {
+  result.insert = function(key, val) {
+    var index = getIndexBelowMaxForKey(key, storageLimit);
     // TODO: implement `insert`
+    //increment size
+    //if the position of the index is not existant
+    if(storage[index] === undefined){
+      // push a bucket and a tuple
+      storage[index] = [[key, val]]
+      size++;
+    }
+    //else
+    else{
+      //if the bucket containts the exact key in a tuple, 
+      for( var i = 0; i < storage[index].length; i++){
+          if(storage[index][i][0] === key){
+            //override the tuple
+            storage[index][i] = [key, val];
+          }
+      }
+      //else 
+      else{
+        //push the tuple into the bucket
+        storage[index].push([key,val])
+        size++;
+      }
+    }    
   };
 
-  result.retrieve = function(/*...*/ 
-) {
-    // TODO: implement `retrieve`
+  result.retrieve = function(key) {
+    var index = getIndexBelowMaxForKey(key, storageLimit);
+    //look up storage with index
+    if(storage[index] !== undefined){
+      //iterate through bucket
+      for(i = 0; i < storage[index].length; i++ ){
+        //if we find the key of the tuple
+        if(storage[index][i][0] === key){
+          //return the tuple
+          return storage[index][i][1];
+        }
+      }
+    }
   };
 
-  result.remove = function(/*...*/ 
-) {
+  result.remove = function(key) {
+    var index = getIndexBelowMaxForKey(key, storageLimit);
     // TODO: implement `remove`
+    //decrement size
+    //if the bucket exitsts
+      if(storage[index] !== undefined){
+        //loop through the bucket
+          for(var i = 0; i < storage[index].length; i++){
+             //if the tuple exists
+             if(storage[index][i][0] === key){
+              //remove the tuple
+                storage[index] = storage[index].filter(function(tuple){
+                  return tuple[0] !== key;
+                })
+                size--;
+             }
+              
+          }
+      }
+      
   };
 
   return result;
