@@ -65,5 +65,5 @@ var makeChange = function(total) {
   //return counter
   console.log(counter)
   return counter
-};
+};///////////xw
 
