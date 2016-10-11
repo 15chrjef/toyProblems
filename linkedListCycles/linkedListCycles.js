@@ -32,9 +32,39 @@
  */
 
 var Node = function(value) {
-  return { value: value, next: null };
+  return { value: value, next: null, };
 };
 
 var hasCycle = function(linkedList) {
-  // TODO: implement me!
+  if(!linkedList){
+    return false
+  }
+  //create a slow and fast node
+  var slow = linkedList;
+  var fast = linkedList;
+  //while next is not null 
+  while(slow.next !== null && fast.next !== null){
+    //move the nodes
+    slow = slow.next
+    fast = fast.next.next
+    //test if they are at the same node
+    if(slow === fast){
+      console.log(true)
+      return true;
+    }
+  }
+    //return false
+    console.log(false)
+    return false;
 };
+
+
+var nodeA = Node('A');
+  var nodeB = nodeA.next = Node('B');
+  var nodeC = nodeB.next = Node('C');
+  var nodeD = nodeC.next = Node('D');
+  var nodeE = nodeD.next = Node('E');
+  // hasCycle(nodeA); // => false
+  nodeE.next = nodeB;
+  hasCycle(nodeA); // => true
+
