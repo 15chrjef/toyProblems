@@ -49,12 +49,10 @@ var hasCycle = function(linkedList) {
     fast = fast.next.next
     //test if they are at the same node
     if(slow === fast){
-      console.log(true)
       return true;
     }
   }
     //return false
-    console.log(false)
     return false;
 };
 
@@ -67,4 +65,4 @@ var nodeA = Node('A');
   // hasCycle(nodeA); // => false
   nodeE.next = nodeB;
   hasCycle(nodeA); // => true
-
+//done
