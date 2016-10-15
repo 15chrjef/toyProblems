@@ -30,20 +30,6 @@
  * You will need a doubly-linked list (provided).
  */
 
-var LRUCache = function (limit) {
-};
-
-var LRUCacheItem = function (val, key) {
-};
-
-LRUCache.prototype.size = function () {
-};
-
-LRUCache.prototype.get = function (key) {
-};
-
-LRUCache.prototype.set = function (key, val) {
-};
 
 
 
@@ -171,3 +157,49 @@ ListNode.prototype.delete = function () {
   if (this.next) { this.next.prev = this.prev; }
 };
 
+////*************************************************************
+
+
+var LRUCache = function (limit) {
+  this.obj = {};
+  this.limit = limit;
+  this.length = 0;
+  this.myList = new List();
+};
+
+var LRUCacheItem = function (val, key) {
+  this.val = val;
+  this.key = key;
+};
+
+LRUCache.prototype.size = function () {
+  return this.length;
+};
+
+LRUCache.prototype.get = function (key) {
+};
+
+LRUCache.prototype.set = function (key, val) {
+  if (this.limit >= this.size()) {
+    var nodey = new ListNode(null, val, this.myList.head);
+    if (this.myList.head !== null && this.myList.tail !== null) {
+      this.myList.head.prev = nodey;
+      this.myList.head = nodey;
+      this.obj[key] = val;
+      this.length ++;
+    } else {
+      this.myList.head = nodey;
+      this.myList.tail = nodey;
+      this.obj[key] = val; 
+      this.length ++;
+    }
+  } else {
+    this.myList.tail.value;
+  }
+};
+
+var cashy = new LRUCache(4);
+cashy.set(1, 1);
+cashy.set(3, 3);
+console.log(cashy.obj)
+console.log(cashy.size())
