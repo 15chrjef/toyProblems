@@ -17,6 +17,21 @@ var Tree = function() {
   this.children = [];
 };
 
+Tree.prototype.isDescendant = function(child) {
+  if (this.children.indexOf(child) !== -1) {
+    // `child` is an immediate child of this tree
+    return true;
+  } else {
+    for (var i = 0; i < this.children.length; i++) {
+      if (this.children[i].isDescendant(child)) {
+        // `child` is descendant of this tree
+        return true;
+      }
+    }
+    return false;
+  }
+};
+
 /**
   * add an immediate child
   */
@@ -51,29 +66,35 @@ Tree.prototype.getClosestCommonAncestor = function(/*...*/
   * 3.) me.getAncestorPath(me) -> [me]
   * 4.) grandma.getAncestorPath(H R Giger) -> null
   */
-Tree.prototype.getAncestorPath = function(/*...*/
-) {
+Tree.prototype.getAncestorPath = function(otherTree) {
   // TODO: implement me!
+  var results = [];
+  (function subr(currentTree) {
+    if (currentTree.isDescendant(otherTree)) {
+      results.push(currentTree);
+      currentTree.children.forEach(function(tree) {
+        if (tree && tree.isDescendant(otherTree)) {
+          subr(tree);
+        }
+      });
+    }
+  }).call(this, this);
+  console.log(results);
+  return results;
 };
+
+ var grandma = new Tree();
+  var mom = new Tree();
+  grandma.addChild(mom);
+  var me = new Tree();
+  mom.addChild(me);
+  grandma.getAncestorPath(me); // => [grandma, mom, me]
 
 /**
   * check to see if the provided tree is already a child of this
   * tree __or any of its sub trees__
   */
-Tree.prototype.isDescendant = function(child) {
-  if (this.children.indexOf(child) !== -1) {
-    // `child` is an immediate child of this tree
-    return true;
-  } else {
-    for (var i = 0; i < this.children.length; i++) {
-      if (this.children[i].isDescendant(child)) {
-        // `child` is descendant of this tree
-        return true;
-      }
-    }
-    return false;
-  }
-};
+
 
 /**
   * remove an immediate child
