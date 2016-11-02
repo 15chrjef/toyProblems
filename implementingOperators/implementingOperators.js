@@ -32,6 +32,10 @@ var divide = function(x, y) {
     total ++;
     numer -= y;
   }
+  if( numer !== 0){
+    numer = multiply(numer,100);
+    numer = divide(numer,10);
+  }
   console.log(total);
   return total;
 };
