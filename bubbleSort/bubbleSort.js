@@ -38,4 +38,21 @@ var i;
 
 var bubbleSort = function(array) {
   // Your code here.
+  var done = false;
+  while (!done) {
+    done = true;
+    for (var i = 0; i < array.length; i++) {
+      if (array[i] > array[i + 1]) {
+        done = false;
+        var temp = array[i + 1];
+        array[i + 1] = array[i];
+        array[i] = temp;
+      } 
+    }
+  }
+  console.log(array);
+  return array;
 };
+
+
+bubbleSort([1,21323431,2,45,2345,2,345,324,6,2,45234,52,345,234,2])

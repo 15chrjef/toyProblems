@@ -80,8 +80,22 @@ BinaryHeap.prototype.getRoot = function () {
 
 BinaryHeap.prototype.insert = function (value) {
   // TODO: Your code here
-}
+  this._heap.push(value);
+  //get child index
+  var cIndex = this._heap.length - 1;
+  //get parent index
+  var parentIndex = Math.floor( (cIndex - 1) / 2 );
+  while (this._compare(this._heap[cIndex], this._heap[parentIndex])) {
+    var temp = this._heap[cIndex];
+    this._heap[cIndex] = this._heap[parentIndex];
+    this._heap[parentIndex] = temp;
+    var cIndex = parentIndex;
+    var parentIndex = Math.floor( (cIndex - 1) / 2 );
+  }
+  //test if value is less than parent
+  //repeat
+};
 
 BinaryHeap.prototype.removeRoot = function () {
-  // TODO: Your code here
-}
+ this._heap = this._heap.filter()
+};
