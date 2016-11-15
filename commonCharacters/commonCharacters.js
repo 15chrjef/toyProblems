@@ -14,4 +14,14 @@
 
 var commonCharacters = function(string1, string2) {
   // TODO: Your code here!
+  var returnedString = '';
+  string1.split('').forEach(function(letter) {
+    if(string1.indexOf(letter) !== -1 && string2.indexOf(letter) !== -1 && returnedString.indexOf(letter === -1)) {
+      returnedString += letter;
+    }
+  });
+  return returnedString;
 };
+
+
+console.log(commonCharacters('acexivou', 'aegihobu'))
