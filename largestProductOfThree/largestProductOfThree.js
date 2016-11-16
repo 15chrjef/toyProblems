@@ -9,5 +9,50 @@
 
 
 var largestProductOfThree = function(array) {
-  // TODO: everything
+  array.sort(function(a, b){
+    return a > b;
+  });
+  var negatives = 0;
+  var resort = false;
+
+  for (var j = 0; j < array.length; j++) {
+    if (array[j] < 0) {
+      negatives ++;
+    }
+    if (negatives > 1) {
+      var resort = true;
+    }
+  }
+  console.log(array)
+  if (resort === true) {
+    if ( negatives % 2 !== 0) {
+      console.log('slicing')
+      array.splice(negatives -1, 1);
+    }
+    for (var x = 0; x < array.length; x++) {
+      if (array[x] < 0) {
+        array[x] = array[x] * -1;
+      } else {
+      }
+    }
+  }
+  array.sort(function(a, b){
+    return a > b;
+  });
+console.log(array)
+  var newArray = [];
+  newArray.push(array.pop());
+  newArray.push(array.pop());
+  newArray.push(array.pop());
+  var num = 1;
+  for (var i = 0; i < newArray.length; i++) {
+    num = num * newArray[i];
+  }
+  console.log(num)
+  console.log(newArray);
+  return num;
 };
+
+
+largestProductOfThree([2, 1, 3, 7, -110, -10, -120]);
+
