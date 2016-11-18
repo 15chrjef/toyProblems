@@ -1,15 +1,25 @@
-/**
-  * Write a function that, given two objects, returns whether or not the two
-  * are deeply equivalent--meaning the structure of the two objects is the
-  * same, and so is the structure of each of their corresponding descendants.
-  *
-  * Examples:
-  *
-  * deepEquals({a:1, b: {c:3}},{a:1, b: {c:3}}); // true
-  * deepEquals({a:1, b: {c:5}},{a:1, b: {c:6}}); // false
-  *
-  * don't worry about handling cyclical object structures.
-  *
-  */
+
 var deepEquals = function(apple, orange) {
+  if (typeof apple === 'object' && typeof orange === 'object') {
+    var apples = Object.values(apple);
+    var oranges = Object.values(orange);
+    console.log(apples, oranges)
+    var equals = true;
+    apples.forEach(function(apple, i) {
+      console.log('forEaching', apples[i], oranges[i], i)
+        if (typeof apples[i] ==='object' && typeof oranges[i]=== 'object') {
+          console.log('objects')
+          console.log('deepply equeling',deepEquals(apples[i], oranges[i]))
+          if(!deepEquals(apples[i], oranges[i])){
+            console.log('children',apple[i], orange[i], i)
+            equals = false;
+          }
+        }else if ( apples[i] !== oranges[i]) {
+        equals = false
+      }
+    });
+    console.log(equals)
+    return equals;
+  }
+  return false
 };

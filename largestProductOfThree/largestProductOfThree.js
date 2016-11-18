@@ -28,6 +28,7 @@ var largestProductOfThree = function(array) {
     if ( negatives % 2 !== 0) {
       console.log('slicing')
       array.splice(negatives -1, 1);
+      console.log('spliced ', array)
     }
     for (var x = 0; x < array.length; x++) {
       if (array[x] < 0) {
@@ -53,6 +54,5 @@ console.log(array)
   return num;
 };
 
-
-largestProductOfThree([2, 1, 3, 7, -110, -10, -120]);
-
+    largestProductOfThree([2, 3, -11, 7, 5, -13])
+    largestProductOfThree([-31, 41, 34, -37, -17, 29])
