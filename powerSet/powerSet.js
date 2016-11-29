@@ -18,4 +18,18 @@
  */
 
 var powerSet = function(str) {
+  var fn = function(string, inputString, array) {
+    if (!string && !inputString)
+        return;
+    if (!inputString) {
+        array.push(string);
+    } else {
+        fn(string + inputString[0], inputString.slice(1), array);
+        fn(string, inputString.slice(1), array);
+    }
+    return string;
+  }
+  return fn("", str, []);
 };
+
+powerSet('abc')

@@ -4,7 +4,7 @@ $(function() {
   // for example: <p>Hey there</p>
   // becomes: <p><span>Hey</span><span>there</span></p>
   // HINT: the `split` array method is your friend
-
+  console.log($('body').find('p'))
   // TODO: your code here!
 
 
@@ -12,5 +12,4 @@ $(function() {
   // Next, change spans to random colors, once per second
 
   // TODO: your code here!
-
 });

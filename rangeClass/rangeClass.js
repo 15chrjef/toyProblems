@@ -40,16 +40,67 @@
 
 
 var Range = function(start, end, step) {
+  this.start = start;
+  this.end = end;
+  this.step = step || 1;
 };
 
 Range.prototype.size = function () {
+  if (this.step < 0) {
+    var myStep = this.step * -1;
+  }
+  if (this.start > this.end) {
+    var newStart = this.end;
+    var newEnd = this.start;
+  } else {
+    var newStart = this.start;
+    var newEnd = this.end;
+  }
+  var counter = 0;
+  for (var i = newStart; i <= this.end; i += this.step) {
+    counter ++;
+  }
+  return counter;
 };
 
 Range.prototype.each = function (callback) {
+    if (this.start > this.end || this.step < 0) {
+    if (this.step < 0) {
+      var newStep = this.step * -1;
+    }
+    for (var i = this.start; i >= this.end; i -= this.step) {
+      callback(i);
+    }
+
+    } else {
+      for (var i = this.start; i <= this.end; i += this.step) {
+        callback(i);
+      }
+    }
 };
 
 Range.prototype.includes = function (val) {
+  if (this.start > this.end || this.step < 0) {
+    if (this.step < 0) {
+      var newStep = this.step * -1;
+    }
+    for (var i = this.start; i >= this.end; i -= this.step) {
+      if (val === i) {
+        return true
+      }
+    }
+
+    } else {
+      for (var i = this.start; i <= this.end; i += this.step) {
+        if (val === i) {
+          return true;
+        }
+      }
+    }
+  return false;
 };
 
 var range = new Range(1);
 
+var evenNumbers = new Range(2, 8, 2);
+console.log(evenNumbers.size(),  evenNumbers.includes(2),  evenNumbers.includes(3))
