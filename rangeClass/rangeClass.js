@@ -101,6 +101,3 @@ Range.prototype.includes = function (val) {
 };
 
 var range = new Range(1);
-
-var evenNumbers = new Range(2, 8, 2);
-console.log(evenNumbers.size(),  evenNumbers.includes(2),  evenNumbers.includes(3))

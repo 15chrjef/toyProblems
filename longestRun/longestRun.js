@@ -12,14 +12,32 @@
  * Try your function with long, random strings to make sure it handles large
  * inputs well.
  */
-
 var longestRun = function (string) {
-  // TODO: Your code here!
+  var longestIndex = 0
+  var longestCounter = 1;
+  var tempCounter = 1;
+  var last = string.slice(0,1)
+  for(var index = 1; index < string.length; index++){
+    if(string[index] === last){
+      tempCounter ++;
+      if(tempCounter > longestCounter){
+        longestCounter = tempCounter;
+        longestIndex = index - (longestCounter -1)
+      }
+    }
+    else {
+      tempCounter = 1
+      last = string[index]
+    }
+  }     
+  console.log(string, [longestIndex, longestIndex + (longestCounter -1)])
+  return [longestIndex, longestIndex + (longestCounter -1)]
 };
+
 
 // If you need a random string generator, use this!
 // (you wont need this function for your solution but it may help with testing)
-var randomString = function (len) {
+function randomString (len) {
   var text = '';
   var possible = 'abcdefghijklmnopqrstuvwxyz';
 
@@ -29,3 +47,4 @@ var randomString = function (len) {
 
   return text;
 };
+longestRun(randomString(10))
