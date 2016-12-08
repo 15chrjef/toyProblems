@@ -98,5 +98,34 @@
 
 
 var mergeSort = function(array) {
-  // Your code here.
+  var splitArr = []
+  array.forEach(function(num) {
+    splitArr.push([num])
+  })
+  while (splitArr.length > 1){
+    console.log('in the process',splitArr)
+    var newSaveArr = []
+    for (var i = 0; i < splitArr.length; i++){
+      if(i % 2 === 0 && i + 1 < splitArr.length){
+        var newSubArr = []
+        while(splitArr[i][0] && splitArr[i + 1][0]){
+          splitArr[i][0] > splitArr[i + 1][0] ? newSubArr.push(splitArr[i + 1].shift()) : newSubArr.push(splitArr[i].shift())
+        }
+        while(splitArr[i][0]){
+          newSubArr.push(splitArr[i].shift())
+        }
+        while(splitArr[i + 1][0]){
+          newSubArr.push(splitArr[i + 1].shift())
+        }
+        newSaveArr.push(newSubArr)
+      } else if ( i % 2 !== 1 && i + 1 == splitArr.length){
+        newSaveArr.push(splitArr[i])
+      }
+    }
+    splitArr = newSaveArr
+  }
+  console.log('splitarrrrrr', splitArr)
+  return splitArr
 };
+
+mergeSort([4,7,4,3,9,1,2])
