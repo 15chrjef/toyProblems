@@ -1,14 +1,9 @@
 
 # Toy Problems
 
-Welcome to Toy Problems. This repository will be updated every morning with a new
-code challenge.
+Welcome to Toy Problems. 
 
 Feel free to use Google to aid you in solving the coding challenges!
-
-## Using this Repository
-
-You'll find each day's toy problem in its own folder.
 
 ## Getting a Copy of the Repo
 
