@@ -1,10 +1,5 @@
 
 # Toy Problems
 
-Welcome to Toy Problems. 
-
-Feel free to use Google to aid you in solving the coding challenges!
-
-## Getting a Copy of the Repo
-
-If you haven't already, fork the repository on GitHub and clone your newly created
+Welcome to my toy problems. 
+I cover just about everything from string parsing to tree traversal. Feel Free to take a look around and clone anything!
