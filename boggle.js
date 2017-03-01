@@ -33,6 +33,9 @@ function boggleIt(dic, letters){
   
   
   function togglePiece(i,j, board){
+    if(i === undefined){
+      return board.slice()
+    }
     board = board.slice()
     board[i][j] = 'x'
     return board
@@ -92,7 +95,7 @@ function boggleIt(dic, letters){
   
   for(var i = 0; i < maze.length; i++){
     for(var j = 0; j < maze[0].length; j++){
-      var newBoard = maze.slice()
+      var newBoard = togglePiece(undefined,undefined, letters)
       findWords(i,j, newBoard)
     }
   }
