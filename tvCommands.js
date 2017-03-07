@@ -14,12 +14,10 @@ function tvCommands(title, gridWidth){
         while(getCurIndex(cur) + gridWidth <= getCurIndex(target)){
           cur = lets[getCurIndex(cur) + gridWidth]
           commands += 'd'
-          console.log('cur', cur)
         }
         //move right column if target is less than row away
         while(cur < target){
           cur = lets[getCurIndex(cur) + 1]
-          console.log(cur)
           commands += 'r'
         }
         //cur is in front of/below target
