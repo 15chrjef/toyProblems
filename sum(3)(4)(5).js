@@ -10,5 +10,6 @@ function sum(num1, num2){
   }
 }
 
-sum(5)(4)(3)
+sum(5)(4)(3)//12
+https://repl.it/Gj6U
 
